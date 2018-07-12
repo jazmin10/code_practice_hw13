@@ -107,20 +107,48 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        ...
-	      </div>
+	      	<!-- <h2>Test</h2>
+	      	<img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ59J_XtmaL0r5lMeg5eplcnAicjppaZz8HclkwQWsj7NSu8veXlw">
+	      </div> -->
 	    </div>
 	  </div>
 	</div>
 
 	<script type="text/javascript">
-		// $("#submit-btn").click(function() {
+		// GLOBAL VARIABLES
 
-		// 	$('#myModal').on('shown.bs.modal', function () {
-		// 	  $('#myInput').trigger('focus');
-		// 	});
+		// MAIN PROCESSES
 
-		// });
+		$('#modal-window').on('shown.bs.modal', function () {
+  			console.log("hello");
+
+  			results();
+			});
+
+		// FUNCTIONS
+
+		function results() {
+			var user = {
+				name: $("#name-input").val().trim(),
+				photo: $("#photo-input").val().trim(),
+				scores: [
+					parseInt($("#q1-input").val()),
+					parseInt($("#q2-input").val()),
+					parseInt($("#q3-input").val())
+				]
+			};
+
+			$.ajax({
+				url: "/api/new",
+				method: "POST",
+				data: JSON.stringify(user),
+				contentType: "application/json"
+			}).then(function(data) {
+				console.log(data);
+			});
+
+	
+		} 
 	</script>
 
 </body>
