@@ -14,7 +14,9 @@
 	app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
 	// Import routing
+	require("./app/routing/apiRoutes.js")(app);
 	require("./app/routing/htmlRoutes.js")(app);
+
 
 	// Start the server
 	app.listen(PORT, function() {
