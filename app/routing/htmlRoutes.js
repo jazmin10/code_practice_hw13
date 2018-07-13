@@ -1,5 +1,8 @@
 // =========== HTML ROUTING ===========
 
+// Import dependencies
+	var path = require("path");
+
 // ---------- MAIN PROCESSES ----------
 
 	// Export the following function
@@ -17,14 +20,14 @@
 
 	// Determine what html page was requested
 	function determinePage(htmlReq, htmlResp) {
-
+	
 		// Determine what route was "hit" and display the appropriate page
-			switch (htmlReq.params.htmlRoute) {
+			switch (htmlReq.params.htmlRouting) {
 				case undefined:
-					displayPage(htmlResp, "home page");
+					displayPage(htmlResp, "/../public/home.html");
 					break;
 				case "survey":
-					displayPage(htmlResp, "survey page");
+					displayPage(htmlResp, "/../public/survey.html");
 					break;
 				// The browser also sends /favicon.io with each request
 				// We don't want to take any action, therefore closing the route
@@ -37,6 +40,6 @@
 
 	// Responds with the appropriate html file
 	function displayPage(res, page) {
-		res.send(page);
+		res.sendFile(path.join(__dirname, page));
 	}
 

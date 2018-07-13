@@ -41,7 +41,7 @@
 		// has the best/lowest compatibility score with the new user 
 		friends.forEach(function(currFriend, index) {
 			var relScore = findScore(user.scores, currFriend.scores);
-			
+		
 			if (relScore < bestComp) {
 				bestComp = relScore;
 				matchIndex = index;

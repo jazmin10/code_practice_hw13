@@ -5,13 +5,15 @@
 	<title>Survey</title>
 
 	<!-- BOOTSTRAP CSS -->
-	<link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
 
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 	<!-- BOOTSTRAP JS -->
-	<script type="text/javascript" src="./bootstrap.min.js"></script>
+	<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="./assets/js/logic.js"></script>
 </head>
 <body>
 
@@ -74,7 +76,7 @@
 		    <label for="q3">You find it easy to stay relaxed and focused even when there is some pressure.</label>
 		    <div class="form-row">
 			    <div class="col-md-3">
-				    <select class="form-control" id="q2">
+				    <select class="form-control" id="q3">
 				    	<option hidden>Select an option</option>
 				      <option value="1">1 (strongly disagree)</option>
 				      <option value="2">2</option>
@@ -107,49 +109,12 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	      	<!-- <h2>Test</h2>
-	      	<img width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ59J_XtmaL0r5lMeg5eplcnAicjppaZz8HclkwQWsj7NSu8veXlw">
-	      </div> -->
+	      	<h2 id="match-name"></h2>
+	      	<img id="match-photo" width="100%" src="">
+	      </div>
 	    </div>
 	  </div>
 	</div>
-
-	<script type="text/javascript">
-		// GLOBAL VARIABLES
-
-		// MAIN PROCESSES
-
-		$('#modal-window').on('shown.bs.modal', function () {
-  			console.log("hello");
-
-  			results();
-			});
-
-		// FUNCTIONS
-
-		function results() {
-			var user = {
-				name: $("#name-input").val().trim(),
-				photo: $("#photo-input").val().trim(),
-				scores: [
-					parseInt($("#q1-input").val()),
-					parseInt($("#q2-input").val()),
-					parseInt($("#q3-input").val())
-				]
-			};
-
-			$.ajax({
-				url: "/api/new",
-				method: "POST",
-				data: JSON.stringify(user),
-				contentType: "application/json"
-			}).then(function(data) {
-				console.log(data);
-			});
-
-	
-		} 
-	</script>
 
 </body>
 </html>
