@@ -12,6 +12,8 @@
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.text());
 	app.use(bodyParser.json({type: "application/vnd.api+json"}));
+	// helps serve static files (our frontend files)
+	app.use(express.static(__dirname + "/app/public"));
 
 	// Import routing
 	require("./app/routing/apiRoutes.js")(app);
