@@ -4,9 +4,9 @@ $(document).ready(function() {
 // ---------- MAIN PROCESSES ----------
 
 	// When you click the submit button, display the modal window and...
-	$('#modal-window').on('shown.bs.modal', function () {
+	$('#submit-btn').on("click", function () {
 		// find the new user's friend match
-  	results();
+  		results();
 	});
 
 // ---------- FUNCTIONS ----------
@@ -38,6 +38,8 @@ $(document).ready(function() {
 		}).then(function(match) {
 			$("#match-name").html(match.name);
 			$("#match-photo").attr("src", match.photo);
+
+			$("#modal-window").modal("toggle");
 		});
 	}
 
